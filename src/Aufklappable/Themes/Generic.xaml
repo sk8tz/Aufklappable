@@ -1,0 +1,35 @@
+﻿<!--
+    <copyright file="Generic.xaml">
+        Copyright (c) 2016 stroeb
+   
+        Licensed under Microsoft Public License (Ms-PL)
+        http://opensource.org/licenses/MS-PL
+    </copyright>
+    <author>stroeb</author>
+!-->
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:aufklappable="clr-namespace:Aufklappable">
+
+    <aufklappable:ExpanderToBooleanConverter x:Key="ExpanderToBooleanConverter" />
+
+    <Style TargetType="{x:Type aufklappable:AufklappableItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type aufklappable:AufklappableItem}">
+                    <Expander x:Name="Expander" Header="{TemplateBinding Title}">
+                        <Expander.IsExpanded>
+                            <aufklappable:ConverterBindableBinding
+                                Binding="{Binding Path=Parent.(aufklappable:AufklappableContainer.SelectedItem), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                Converter="{StaticResource ExpanderToBooleanConverter}"
+                                ConverterParameterBinding="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Expander.IsExpanded>
+                        <ContentPresenter ContentSource="Content" />
+                    </Expander>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,22 @@
+﻿﻿extensions: designer.cs generated.cs
+extensions: .cs
+/*
+    <copyright file="%FileName%">
+        Copyright (c) 2016 stroeb
+    
+        Licensed under Microsoft Public License (Ms-PL)
+        http://opensource.org/licenses/MS-PL
+    </copyright>
+    <author>stroeb</author>
+*/
+
+﻿extensions: .xaml
+<!--
+    <copyright file="%FileName%">
+        Copyright (c) 2016 stroeb
+   
+        Licensed under Microsoft Public License (Ms-PL)
+        http://opensource.org/licenses/MS-PL
+    </copyright>
+    <author>stroeb</author>
+!-->

@@ -1,0 +1,60 @@
+-
+  branches:
+    only:
+      - master
+  
+  skip_commits:
+    message: ^.*\b(no_ci)\b.*$
+
+  version: 0.9.0.{build}
+
+  platform: Any CPU
+  configuration: Release
+
+  assembly_info:
+    patch: true
+    file: '**\AssemblyInfo.*'
+    assembly_version: '{version}' 
+    assembly_file_version: '{version}'
+    assembly_informational_version: '{version}'
+
+  before_build:
+    - nuget restore src\Aufklappable.sln
+
+  build:
+    publish_nuget: true
+    publish_nuget_symbols: true
+
+  artifacts:
+  - path: src\WpfAufklappable\bin\release\*.nupkg
+    name: NuGet
+  - path: src\WpfAufklappable\bin\release\Aufklappable.dll
+    name: Assembly
+
+  deploy:
+  - provider: NuGet
+    api_key:
+      secure: p/MDd5J4SbX1gokY1RAg0XYg08IYdVpIaEPqczeZjXUzYrz/S/4WM5q29NNj+/fJ
+    on:
+      appveyor_repo_tag: true
+  - provider: GitHub
+    auth_token:
+      secure: QSKP+pIgid5sjnE1b/c3gjBr/k4Xduo4GY9iOz0Zvg+f49l2UNVPm/fnkptPSzZO
+    draft: true
+    on:
+      appveyor_repo_tag: true
+
+-
+  skip_commits:
+    message: ^.*\b(no_ci)\b.*$
+
+  version: 0.9.0.{build}
+
+  platform: Any CPU
+  configuration: Debug
+
+  before_build:
+    - nuget restore src\Aufklappable.sln
+
+  pull_requests:
+    do_not_increment_build_number: true
