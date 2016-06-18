@@ -3,11 +3,7 @@
     only:
       - master
   
-  skip_commits:
-    message: ^.*\b(no_ci)\b.*$
-    files: '**/*.md'
-
-  version: 0.9.0.{build}
+  version: 1.0.0.{build}
 
   platform: Any CPU
   configuration: Release
@@ -46,11 +42,7 @@
       appveyor_repo_tag: true
 
 -
-  skip_commits:
-    message: ^.*\b(no_ci)\b.*$
-    files: '**/*.md'
-
-  version: 0.9.0.{build}
+  version: 1.0.0.{build}
 
   platform: Any CPU
   configuration: Debug
