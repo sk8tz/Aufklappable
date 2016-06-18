@@ -5,6 +5,7 @@
   
   skip_commits:
     message: ^.*\b(no_ci)\b.*$
+    files: '**/*.md'
 
   version: 0.9.0.{build}
 
@@ -47,6 +48,7 @@
 -
   skip_commits:
     message: ^.*\b(no_ci)\b.*$
+    files: '**/*.md'
 
   version: 0.9.0.{build}
 
