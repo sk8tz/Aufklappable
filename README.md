@@ -1,6 +1,6 @@
 ﻿# Aufklappable
 
-[![Build status](https://ci.appveyor.com/api/projects/status/71m4q1nka1krvdws/branch/master?svg=true)](https://ci.appveyor.com/project/stroeb/aufklappable/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/die9ll8i7sjrcy3r/branch/master?svg=true)](https://ci.appveyor.com/project/stroeb/aufklappable/branch/master)
 [![NuGet](http://img.shields.io/nuget/v/Aufklappable.svg)](https://www.nuget.org/packages/Aufklappable/)
 
 ## What is an Aufklappable?
