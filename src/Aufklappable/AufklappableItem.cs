@@ -9,6 +9,7 @@
 */
 
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,7 @@ namespace Aufklappable
     /// <summary>
     ///     Represents a single item in an <see cref="AufklappableContainer" />.
     /// </summary>
+    [DebuggerDisplay("Tag = {Tag}, Title = {Title}")]
     public class AufklappableItem : ContentControl
     {
         /// <summary>
