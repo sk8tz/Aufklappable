@@ -98,7 +98,11 @@ namespace Aufklappable
 
             foreach (var item in allItems)
             {
-                item.MaxHeight = itemMaxHeight;
+                item.MaxHeight = itemMaxHeight < 0 ? double.PositiveInfinity : itemMaxHeight;
+                if (item.Tag == SelectedItem)
+                {
+                    item.Height = itemMaxHeight < item.ActualHeight ? double.NaN : itemMaxHeight;
+                }
             }
         }
 
@@ -121,6 +125,10 @@ namespace Aufklappable
             var sumOfAllMarginsAndClosedItemHeights = Margin.Top;
             foreach (var item in allItems)
             {
+                // force recalculation of ActualHeight
+                item.Height = double.NaN;
+                item.UpdateLayout();
+
                 sumOfAllMarginsAndClosedItemHeights += item.Margin.Top;
                 if (item.Tag != SelectedItem)
                 {
