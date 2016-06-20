@@ -16,17 +16,31 @@
     <aufklappable:ExpanderToBooleanConverter x:Key="ExpanderToBooleanConverter" />
 
     <Style TargetType="{x:Type aufklappable:AufklappableItem}">
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type aufklappable:AufklappableItem}">
-                    <Expander x:Name="Expander" Header="{TemplateBinding Title}">
+                    <Expander x:Name="PART_Expander"
+                              Padding="{TemplateBinding Padding}"
+                              Header="{TemplateBinding Title}"
+                              Foreground="{TemplateBinding Foreground}"
+                              Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              SnapsToDevicePixels="True">
                         <Expander.IsExpanded>
                             <aufklappable:ConverterBindableBinding
                                 Binding="{Binding Path=Parent.(aufklappable:AufklappableContainer.SelectedItem), RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                 Converter="{StaticResource ExpanderToBooleanConverter}"
                                 ConverterParameterBinding="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Expander.IsExpanded>
-                        <ContentPresenter ContentSource="Content" />
+                        <ScrollViewer Focusable="False" VerticalScrollBarVisibility="Auto">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </ScrollViewer>
                     </Expander>
                 </ControlTemplate>
             </Setter.Value>
